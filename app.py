@@ -67,5 +67,13 @@ if picture:
 
     response = requests.post("https://api.openai.com/v1/chat/completions", headers=headers, json=payload)
 
-    print(response.json())
-    st.write(response.json().get("choices")[0].get("message").get("content"))
+    try:
+        choices = response.json().get("choices")
+        if choices:
+            message = choices[0].get("message")
+            if message:
+                content = message.get("content")
+                if content:
+                    st.write(content)
+    except Exception as e:
+        st.write(f"Error: {e}")
