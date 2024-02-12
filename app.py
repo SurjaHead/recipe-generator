@@ -15,6 +15,7 @@ st.title("Recipe Generator")
 st.write("This app uses OpenAI's GPT-4 model to generate recipes based on the ingredients in the image you upload.")
 
 picture = st.camera_input("Take a picture")
+cuisine = st.text_input("What type of food would you like?", "Indian")
 
 # OpenAI API Key
 api_key = os.getenv("OPENAI_API_KEY")
@@ -50,7 +51,7 @@ if picture:
         "content": [
             {
             "type": "text",
-            "text": "Give me a recipe can be made with the ingredients in this image. Include the preparation time."
+            "text": "Give me a recipe can be made with the ingredients in this image. Include the preparation time. The recipe should be of " + cuisine + " cuisine."
             },
             {
             "type": "image_url",
