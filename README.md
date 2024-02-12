@@ -1,4 +1,4 @@
-#Recipe Generator
+# Recipe Generator
 
 To run the app:
 ```
